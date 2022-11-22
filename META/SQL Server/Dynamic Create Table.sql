@@ -9,7 +9,7 @@ SELECT T.TABLE_NAME,
 				WHEN C.DATA_TYPE IN ('money', 'numeric', 'smallint', 'smallmoney', 'tinyint')
 					THEN 'numeric(38,4)'
 				ELSE C.DATA_TYPE END), ',') 
-	WITHIN GROUP ( ORDER BY c.COLUMN_NAME ,ORDINAL_POSITION asc ) +');' AS Dynamic_Create_Table_Query
+	WITHIN GROUP ( ORDER BY ORDINAL_POSITION asc ) +');' AS Dynamic_Create_Table_Query
 FROM AdventureWorks2019.INFORMATION_SCHEMA.TABLES T
 JOIN AdventureWorks2019.INFORMATION_SCHEMA.COLUMNS C
 	ON T.TABLE_NAME=C.TABLE_NAME
